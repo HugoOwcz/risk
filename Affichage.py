@@ -7,6 +7,7 @@ class Affichage(Jeu):
 
     def __init__(self):
         Jeu.__init__(self)
+        print('fait')
         pyxel.init(12*8, 7*8)
         pyxel.load('new.pyxres')
         pyxel.mouse(True)
