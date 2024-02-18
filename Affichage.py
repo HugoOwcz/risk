@@ -1,12 +1,12 @@
 
 import pyxel
-from Plateau import *
+from Jeu import *
 
 
-class Affichage:
+class Affichage(Jeu):
 
     def __init__(self):
-        self._plateau = Plateau()
+        Jeu.__init__(self)
         pyxel.init(12*8, 7*8)
         pyxel.load('new.pyxres')
         pyxel.mouse(True)
