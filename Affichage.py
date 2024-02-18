@@ -13,8 +13,7 @@ class Affichage:
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT):
-            print('x : ', pyxel.mouse_x, 'y :', pyxel.mouse_y)
+        pass
 
     def draw(self):
         pyxel.cls(1)
@@ -29,22 +28,22 @@ class Affichage:
                     if x > 0:
                         if isinstance(plateau[x-1][y], Region):
                             voisin['N'] = 'R'
-                        elif isinstance(plateau[x-1][y], Chemin):
+                        elif isinstance(plateau[x-1][y], Chemin) and (plateau[x-1][y].get_direction() == 'horizontal' or (plateau[x-1][y].get_direction() == 'croisement' and 'S' in plateau[x-1][y].get_complement())):
                             voisin['N'] = 'C'
                     if x < self._plateau.get_taille()['x']-1:
                         if isinstance(plateau[x+1][y], Region):
                             voisin['S'] = 'R'
-                        elif isinstance(plateau[x+1][y], Chemin):
+                        elif isinstance(plateau[x+1][y], Chemin) and (plateau[x+1][y].get_direction() == 'horizontal' or (plateau[x+1][y].get_direction() == 'croisement' and 'N' in plateau[x+1][y].get_complement())):
                             voisin['S'] = 'C'
                     if y > 0:
                         if isinstance(plateau[x][y-1], Region):
                             voisin['O'] = 'R'
-                        elif isinstance(plateau[x][y-1], Chemin):
+                        elif isinstance(plateau[x][y-1], Chemin) and (plateau[x][y-1].get_direction() == 'horizontal' or (plateau[x][y-1].get_direction() == 'croisement' and 'E' in plateau[x][y-1].get_complement())):
                             voisin['O'] = 'C'
                     if y < self._plateau.get_taille()['y']-1:
                         if isinstance(plateau[x][y+1], Region):
                             voisin['E'] = 'R'
-                        elif isinstance(plateau[x][y+1], Chemin):
+                        elif isinstance(plateau[x][y+1], Chemin) and (plateau[x][y+1].get_direction() == 'horizontal' or (plateau[x][y+1].get_direction() == 'croisement' and 'O' in plateau[x][y+1].get_complement())):
                             voisin['E'] = 'C'
                     if element.get_proprietaire() == 1:
                         self.draw_region(x, y, voisin, 8)

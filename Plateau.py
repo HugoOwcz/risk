@@ -3,7 +3,7 @@
 class Plateau:
     def __init__(self):
         self._taille = {'x': 7, 'y': 12}
-        self._zone = [Zone(1, 3), Zone(2, 10), Zone(3, 3), Zone(4, 5), Zone(5, 3), Zone(6, 2)]
+        self._liste_zones = [Zone(1, 3), Zone(2, 10), Zone(3, 3), Zone(4, 5), Zone(5, 3), Zone(6, 2)]
         self._plateau = []
         self.creation_plateau()
 
@@ -12,6 +12,9 @@ class Plateau:
 
     def get_plateau(self):
         return self._plateau
+
+    def get_liste_zones(self):
+        return self._liste_zones
 
     def creation_plateau(self):
         self._plateau = []
