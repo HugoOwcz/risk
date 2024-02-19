@@ -4,6 +4,7 @@ class Plateau:
     def __init__(self):
         self._taille = {'x': 7, 'y': 12}
         self._liste_zones = [Zone(1, 3), Zone(2, 10), Zone(3, 3), Zone(4, 5), Zone(5, 3), Zone(6, 2)]
+        self._nb_regions = 32
         self._plateau = []
         self.creation_plateau()
 
@@ -15,6 +16,9 @@ class Plateau:
 
     def get_liste_zones(self):
         return self._liste_zones
+
+    def get_nb_regions(self):
+        return self._nb_regions
 
     def creation_plateau(self):
         self._plateau = []
@@ -77,6 +81,15 @@ class Region:
 
     def get_proprietaire(self):
         return self._proprietaire
+
+    def set_proprietaire(self, nom):
+        self._proprietaire = nom
+
+    def get_nb_armee(self):
+        return self._nb_arme
+
+    def set_nb_armee(self, nb):
+        self._nb_arme = nb
 
 
 class Chemin:
