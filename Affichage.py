@@ -30,7 +30,6 @@ class Affichage(Jeu):
                 self.modification_mode()
             elif 69 < pyxel.mouse_x < 102 and 79 < pyxel.mouse_y < 91:
                 self.valider()
-
         if pyxel.btn(pyxel.KEY_A):
             self.ajout_caractere('a')
         elif pyxel.btn(pyxel.KEY_B):
@@ -133,6 +132,7 @@ class Affichage(Jeu):
 
     def draw_parametrage(self):
         pyxel.cls(0)
+        pyxel.text(10, 1, 'Les noms des 2 joueurs doivent etre !=.', 5)
         pyxel.text(10, 10, 'Nom du premier joueur : ', 5)
         pyxel.rectb(110, 7, 51, 10, 7)
         if self._selection1:
@@ -452,10 +452,11 @@ class Affichage(Jeu):
             self._nom_joueur2 += c
 
     def valider(self):
-        self._parametrage = False
-        pyxel.width = 96
-        pyxel.height = 56
-        self.parametrage(self._nom_joueur1, self._nom_joueur2, self._choix_mode)
+        if self._nom_joueur1 != self._nom_joueur2:
+            self._parametrage = False
+            pyxel.width = 96
+            pyxel.height = 56
+            self.parametrage(self._nom_joueur1, self._nom_joueur2, self._choix_mode)
 
 
 a = Affichage()

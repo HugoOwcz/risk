@@ -69,6 +69,14 @@ class Zone:
         self._proprietaire = None
         self._bonus = bonus
 
+    def zone_controle(self):
+        joueur_qui_controle = None
+        for i in self._regions_dans_zone:
+            if joueur_qui_controle is None:
+                joueur_qui_controle = i.get_proprietaire()
+            elif i.get_proprietaire() != joueur_qui_controle:
+                return False, None
+        return True, joueur_qui_controle
 
 class Region:
 
